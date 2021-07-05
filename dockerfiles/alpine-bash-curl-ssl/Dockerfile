@@ -1,4 +1,4 @@
-FROM alpine:3.8
+FROM alpine:3.14.0
 
 # Optional Configuration Parameter
 ARG SERVICE_USER
