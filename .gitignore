@@ -1,7 +1,4 @@
 # Developer: Maik Ellerbrock <opensource@frapsoft.com>
-#
-# GitHub:  https://github.com/ellerbrock
-# Twitter: https://twitter.com/frapsoft
 
 .dockerignore
 build*.sh
