@@ -1,6 +1,21 @@
-# Developer: Maik Ellerbrock <opensource@frapsoft.com>
+/*
+/*/
 
-.dockerignore
-build*.sh
-dockerfiles/dev-*
-rancher/dev-*
+!/.gitignore
+!/CHANGELOG.md
+!/README.md
+!.env
+!/build_all_images.sh
+
+
+## Keep this folder:
+!/dockerfiles
+## But ignore all content:
+/dockerfiles/*
+## Except these:
+!/dockerfiles/*.dockerfile
+
+
+## Ignore all log-related files:
+**/*[Ll]og*
+**/*.log
