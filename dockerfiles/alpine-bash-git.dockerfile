@@ -5,7 +5,7 @@
 # Docker:  https://hub.docker.com/u/ellerbrock
 # Quay:    https://quay.io/user/ellerbrock
 
-FROM alpine:3.8
+FROM alpine:3.14.2
 
 LABEL com.frapsoft.maintainer="Maik Ellerbrock" \
       com.frapsoft.version="0.2.0"

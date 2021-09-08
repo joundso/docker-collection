@@ -6,6 +6,7 @@
 !/README.md
 !.env
 !/build_all_images.sh
+!/renovate.json
 
 
 ## Keep this folder:

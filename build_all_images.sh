@@ -22,7 +22,7 @@ for i in $DIRECTORY/*.dockerfile; do
     # pull latest image for caching:
     docker pull $REGISTRY_PREFIX/$IMAGE_NAME
     # build new image (latest):
-    docker build --progress=plain -f $i -t $REGISTRY_PREFIX/$IMAGE_NAME . 2>&1 | tee ./log_$IMAGE_NAME.log
+    docker build --progress=plain --no-cache -f $i -t $REGISTRY_PREFIX/$IMAGE_NAME . 2>&1 | tee ./log_$IMAGE_NAME.log
     printf "\n\nPushing $IMAGE_NAME image (latest)\n"
     # push new image as new 'latest':
     docker push "$REGISTRY_PREFIX/$IMAGE_NAME"
