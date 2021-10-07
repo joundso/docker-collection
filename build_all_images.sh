@@ -32,3 +32,10 @@ for i in $DIRECTORY/*.dockerfile; do
     printf "\n\nPushing $IMAGE_NAME image ($ALPINE_VERSION_TAG)\n"
     docker push "$REGISTRY_PREFIX/$IMAGE_NAME:$ALPINE_VERSION_TAG"
 done
+
+printf "\n\nBuild the custom dockerfiles:\n"
+cd custom_dockerfiles
+./build_patient-browser.sh
+cd ..
+
+printf "\n\nTotal finish!\n"

@@ -17,6 +17,16 @@
 !/dockerfiles/*.dockerfile
 
 
+## Keep this folder:
+!/custom_dockerfiles
+## But ignore all content:
+/custom_dockerfiles/*
+## Except these:
+!/custom_dockerfiles/*.dockerfile
+!/custom_dockerfiles/*.sh
+
+
 ## Ignore all log-related files:
+## !! KEEP THIS AT THE END !!
 **/*[Ll]og*
 **/*.log
