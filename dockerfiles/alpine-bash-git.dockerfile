@@ -7,8 +7,8 @@
 
 FROM alpine:3.14.2
 
-LABEL com.frapsoft.maintainer="Maik Ellerbrock" \
-      com.frapsoft.version="0.2.0"
+LABEL org.label-schema.schema-version="1.0" \
+  org.label-schema.url="https://github.com/joundso/docker-collection"
 
 # Optional Configuration Parameter
 ARG SERVICE_USER

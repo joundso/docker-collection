@@ -21,7 +21,15 @@ printf "\nPulling cached $IMAGE_NAME image\n"
 # pull latest image for caching:
 docker pull $REGISTRY_PREFIX/$IMAGE_NAME
 # build new image (latest):
-docker build --progress=plain -f ./$IMAGE_NAME.dockerfile -t $REGISTRY_PREFIX/$IMAGE_NAME . 2>&1 | tee ./log_$IMAGE_NAME.log
+docker build \
+    --progress=plain \
+    --no-cache=true \
+    --label "org.label-schema.name=joundso/$IMAGE_NAME" \
+    --label "org.label-schema.vsc-url=https://github.com/joundso/docker-collection/blob/master/custom_dockerfiles/patient-browser.dockerfile" \
+    --label "org.label-schema.vcs-ref=$(git rev-parse HEAD)" \
+    --label "org.label-schema.version=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" \
+    -f ./$IMAGE_NAME.dockerfile \
+    -t $REGISTRY_PREFIX/$IMAGE_NAME . 2>&1 | tee ./log_$IMAGE_NAME.log
 printf "\n\nPushing $IMAGE_NAME image (latest)\n"
 # push new image as new 'latest':
 docker push "$REGISTRY_PREFIX/$IMAGE_NAME"

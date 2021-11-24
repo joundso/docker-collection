@@ -7,9 +7,11 @@ DIRECTORY=./dockerfiles
 
 for i in $DIRECTORY/*.dockerfile; do
     ## Remove path:
-    IMAGE_NAME=${i##*/}
+    suffix=${i##*/}
     ## ... and file ending:
-    IMAGE_NAME="${IMAGE_NAME%.*}"
+    IMAGE_NAME="${suffix%.*}"
+    # printf "\n$i\n"
+    # printf "\n$suffix\n"
 
     printf "\n\n##################################\n"
     printf "Building $REGISTRY_PREFIX/$IMAGE_NAME:$ALPINE_VERSION_TAG"
@@ -22,7 +24,15 @@ for i in $DIRECTORY/*.dockerfile; do
     # pull latest image for caching:
     docker pull $REGISTRY_PREFIX/$IMAGE_NAME
     # build new image (latest):
-    docker build --progress=plain --no-cache -f $i -t $REGISTRY_PREFIX/$IMAGE_NAME . 2>&1 | tee ./log_$IMAGE_NAME.log
+    docker build \
+        --progress=plain \
+        --no-cache=true \
+        --label "org.label-schema.name=joundso/$IMAGE_NAME" \
+        --label "org.label-schema.vsc-url=https://github.com/joundso/docker-collection/blob/master/dockerfiles/$suffix" \
+        --label "org.label-schema.vcs-ref=$(git rev-parse HEAD)" \
+        --label "org.label-schema.version=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" \
+        -f $i \
+        -t $REGISTRY_PREFIX/$IMAGE_NAME . 2>&1 | tee ./log_$IMAGE_NAME.log
     printf "\n\nPushing $IMAGE_NAME image (latest)\n"
     # push new image as new 'latest':
     docker push "$REGISTRY_PREFIX/$IMAGE_NAME"
