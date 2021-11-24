@@ -34,6 +34,7 @@ for i in $DIRECTORY/*.dockerfile; do
 done
 
 printf "\n\nBuild the custom dockerfiles:\n"
+## Patient browser:
 cd custom_dockerfiles
 ./build_patient-browser.sh
 cd ..
