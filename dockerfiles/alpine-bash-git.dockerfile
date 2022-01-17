@@ -1,11 +1,7 @@
-# Developer: Maik Ellerbrock <opensource@frapsoft.com>
-#
-# GitHub:  https://github.com/ellerbrock
-# Twitter: https://twitter.com/frapsoft
-# Docker:  https://hub.docker.com/u/ellerbrock
-# Quay:    https://quay.io/user/ellerbrock
+## BASE_IMAGE_TAG will be overwritten in the build process:
+ARG  BASE_IMAGE_TAG
 
-FROM alpine:3.15
+FROM alpine:${BASE_IMAGE_TAG}
 
 LABEL org.label-schema.schema-version="1.0" \
   org.label-schema.url="https://github.com/joundso/docker-collection"

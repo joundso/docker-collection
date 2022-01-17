@@ -15,7 +15,7 @@ docker login
 
 printf "\n\nCloning patient-browser data\n"
 rm -rf $TMP_FOLDER
-git clone https://github.com/Alvearie/patient-browser.git $TMP_FOLDER
+git clone --depth=1 https://github.com/Alvearie/patient-browser.git $TMP_FOLDER
 
 printf "\nPulling cached $IMAGE_NAME image\n"
 # pull latest image for caching:
