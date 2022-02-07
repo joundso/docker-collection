@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e 
+set -o pipefail
 
 ## Get version tag and registry-prefix from .env:
 source ./.env
