@@ -1,7 +1,7 @@
 #!/bin/bash
 
 IMAGE_NAME=patient-browser
-TMP_FOLDER=tmp_build_patient_browser
+# TMP_FOLDER=tmp_build_patient_browser
 
 ## Get version tag and registry-prefix from .env:
 source ../.env
@@ -13,9 +13,9 @@ printf "\n##################################\n"
 printf "\n\nPlease insert your login credentials to registry: $REGISTRY_PREFIX ...\n"
 docker login
 
-printf "\n\nCloning patient-browser data\n"
-rm -rf $TMP_FOLDER
-git clone --depth=1 https://github.com/Alvearie/patient-browser.git $TMP_FOLDER
+# printf "\n\nCloning patient-browser data\n"
+# rm -rf $TMP_FOLDER
+# git clone --depth=1 https://github.com/Alvearie/patient-browser.git $TMP_FOLDER
 
 printf "\nPulling cached $IMAGE_NAME image\n"
 # pull latest image for caching:
@@ -39,4 +39,4 @@ docker tag $REGISTRY_PREFIX/$IMAGE_NAME $REGISTRY_PREFIX/$IMAGE_NAME:$PATIENT_BR
 printf "\n\nPushing $IMAGE_NAME image ($PATIENT_BROWSER_TAG)\n"
 docker push "$REGISTRY_PREFIX/$IMAGE_NAME:$PATIENT_BROWSER_TAG"
 
-rm -rf $TMP_FOLDER
+# rm -rf $TMP_FOLDER
