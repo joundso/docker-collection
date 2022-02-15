@@ -1,9 +1,18 @@
+## ----------------
+## Image 1:
+## ----------------
 FROM alpine/git:1.0.33 as pboriginal
 RUN git clone --depth=1 https://github.com/smart-on-fhir/patient-browser.git /tmp
 
+## ----------------
+## Image 2:
+## ----------------
 FROM alpine/git:1.0.33 as pbalvearie
 RUN git clone --depth=1 https://github.com/Alvearie/patient-browser.git /tmp
 
+## ----------------
+## Image 3 (Main image):
+## ----------------
 FROM nginxinc/nginx-unprivileged:1.21-alpine
 LABEL org.label-schema.schema-version="1.0" \
     org.label-schema.url="https://github.com/joundso/docker-collection"
