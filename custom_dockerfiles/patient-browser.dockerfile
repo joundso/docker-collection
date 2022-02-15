@@ -1,4 +1,4 @@
-FROM nginxinc/nginx-unprivileged:1.20-alpine
+FROM nginxinc/nginx-unprivileged:1.21-alpine
 
 LABEL org.label-schema.schema-version="1.0" \
     org.label-schema.url="https://github.com/joundso/docker-collection"
