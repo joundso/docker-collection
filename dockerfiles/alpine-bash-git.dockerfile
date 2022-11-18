@@ -1,7 +1,4 @@
-## BASE_IMAGE_TAG will be overwritten in the build process:
-ARG  BASE_IMAGE_TAG
-
-FROM alpine:${BASE_IMAGE_TAG}
+FROM alpine:3.17
 
 LABEL org.label-schema.schema-version="1.0" \
   org.label-schema.url="https://github.com/joundso/docker-collection"
