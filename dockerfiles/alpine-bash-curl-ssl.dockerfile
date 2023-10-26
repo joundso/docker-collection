@@ -1,4 +1,4 @@
-FROM alpine:3.17
+FROM alpine:3.18
 
 LABEL org.label-schema.schema-version="1.0" \
   org.label-schema.url="https://github.com/joundso/docker-collection"
